@@ -18,19 +18,27 @@ public class LoginRestApiApplication {
     }
 
 
-    @Bean
-    CommandLineRunner commandLineRunner(usersRepository usersRepository){
-        return args ->  {
-            users user1 = new users(1L,
-                    "michalles1",
-                    "michal12",
-                    "Michal",
-                    "Lesniak",
-                    "michales@gmail.com"
-            );
-            usersRepository.save(user1);
-        };
-    }
+//    @Bean
+//    CommandLineRunner commandLineRunner(usersRepository usersRepository){
+//        return args ->  {
+//            users user1 = new users(
+//                    "michalles1",
+//                    "michal12",
+//                    "Michal",
+//                    "Lesniak",
+//                    "michales@gmail.com"
+//            );
+//            users user2 = new users(
+//                    "michall",
+//                    "michal",
+//                    "Michal",
+//                    "Les",
+//                    "michales@gmail.com"
+//            );
+//            usersRepository.save(user1);
+//            usersRepository.save(user2);
+//        };
+//    }
 
 
 }
