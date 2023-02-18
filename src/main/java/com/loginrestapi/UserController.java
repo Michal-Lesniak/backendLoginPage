@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
+@RequestMapping("api/users")
 @RestController
 public class UserController {
 
@@ -13,17 +14,17 @@ public class UserController {
     @Autowired
     private usersRepository usersRepository;
 
-    @PostMapping("/login")
+    @PostMapping("/verify")
     public boolean UserLogin(@RequestBody userCredentials user){
         return usersRepository.existsUsersByUsernameAndPassword(user.getUsername(), user.getPassword());
     }
 
-    @GetMapping("/home")
-    public ResponseEntity<users> getUserData(){
-        return ResponseEntity.ok(usersRepository.findUsersByUsername("michalles1"));
+    @GetMapping("/{username}")
+    public ResponseEntity<users> getUserData(@PathVariable("username") String username){
+        return ResponseEntity.ok(usersRepository.findUsersByUsername(username));
     }
 
-    @PostMapping("/sign-up")
+    @PostMapping
     public boolean registerUser(@RequestBody users user){
         usersRepository.save(user);
         return usersRepository.existsUsersByUsername(user.getUsername());
